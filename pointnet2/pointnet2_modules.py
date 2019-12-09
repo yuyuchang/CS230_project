@@ -1,8 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# 
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-
 ''' Pointnet2 layers.
 Modified based on: https://github.com/erikwijmans/Pointnet2_PyTorch
 Extended with the following:
@@ -554,7 +549,7 @@ class SVFE(nn.Module):
 
 class VoxelPointnetSAModuleVotes(nn.Module):
     ''' Modified based on _PointnetSAModuleBase and PointnetSAModuleMSG
-    with extra support for returning point indices for getting their GT votes '''
+    with voxel feature encoding layers after grouping layers. Author: Yen-Yu Chang '''
 
     def __init__(
             self,

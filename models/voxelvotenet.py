@@ -1,11 +1,6 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# 
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+""" Extension of Deep hough voting network for 3D object detection in point clouds. Add voxel feature encoding layers after grouping layers.
 
-""" Deep hough voting network for 3D object detection in point clouds.
-
-Author: Charles R. Qi and Or Litany
+Author: Yen-Yu Chang
 """
 
 import torch
@@ -17,34 +12,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR)
 from backbone_module import Pointnet2Backbone, VoxelPointnet2Backbone
-#import sparseconvnet as scn
 from voting_module import VotingModule
 from proposal_module import ProposalModule
 from dump_helper import dump_results
 from loss_helper import get_loss
-
-"""
-class MySparseFCN(nn.Module):
-
-    dimension = 3
-    reps = 2
-    m = 32
-    nPlanes = [m, 2*m, 3*m, 4*m, 5*m]
-
-    def __init__(self):
-        nn.Module.__init__(self)
-        self.sparseModel = scn.Sequential().add(
-           scn.InputLayer(dimension, torch.LongTensor([50*8+8]*3, mode=3)).add(
-           scn.SubmanifoldConvolution(dimension, 1, m, 3, False)).add(
-           scn.FullyConvolutionalNet(dimension, reps, nPlanes, residual_blocks=False, downsample=[3,2])).add(
-           scn.BatchNormReLU(sum(nPlanes))).add(
-           scn.OutputLayer(dimension))
-        #self.linear = nn.Linear(sum(nPlanes), data.nClassesTotal)
-    def forward(self,x):
-        x=self.sparseModel(x)
-        #x=self.linear(x)
-        return x
-"""
 
 class VoxelVoteNet(nn.Module):
     r"""

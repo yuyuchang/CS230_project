@@ -1,8 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# 
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-
 """ Evaluation routine for 3D object detection with SUN RGB-D and ScanNet.
 """
 
@@ -100,6 +95,8 @@ num_input_channel = int(FLAGS.use_color)*3 + int(not FLAGS.no_height)*1
 
 if FLAGS.model == 'boxnet':
     Detector = MODEL.BoxNet
+elif FLAGS.model == 'voxelvotenet':
+    Detector = MODEL.VoxelVoteNet
 else:
     Detector = MODEL.VoteNet
 

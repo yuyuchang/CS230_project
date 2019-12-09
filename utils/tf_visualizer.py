@@ -1,8 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# 
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-
 '''Code adapted from https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix'''
 import os
 import time
